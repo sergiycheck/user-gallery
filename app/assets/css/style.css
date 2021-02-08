@@ -1,0 +1,54 @@
+.wrapper {
+  position: relative;
+  top: 0;
+  height: 100vh;
+}
+
+#hm-heading {
+  background-image: url("../img/pexels-dom-j-310452.jpg");
+  height: 100%/3;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#search {
+  background: url("../img/search.svg") scroll 85% 50%;
+  padding-left: 10%;
+  background-repeat: no-repeat;
+}
+
+.card-img-wrapper {
+  max-width: 70%;
+  max-height: 40vh;
+}
+
+.inpt-comment {
+  border-top-style: hidden !important;
+  border-right-style: hidden !important;
+  border-left-style: hidden !important;
+}
+
+.inpt-comment:focus {
+  box-shadow: none !important;
+}
+
+#more {
+  display: none;
+  transition: height 0.4s opacity 0.2s ease-out;
+}
+
+#readmore {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#readmore:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.user-img:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
