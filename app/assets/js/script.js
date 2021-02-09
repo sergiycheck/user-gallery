@@ -1,28 +1,41 @@
 const homePageLink =  document.getElementById("loadHomePage");
 const profilePageLink =  document.getElementById("loadProfile");
+const userMessagesLink =  document.getElementById("loadUserMessages");
 
 document.addEventListener('DOMContentLoaded', ()=>{
 	console.log("content loaded");
 });
 
-
 (async function loadContent(){
+	await processHomeContent();
+})();
+
+homePageLink.addEventListener('click',async (event)=>{	
+	await processHomeContent();
+});
+
+async function processHomeContent(){
 	let elFileName = getFileNameAttributeValue(homePageLink.attributes);
 	await loadHome(elFileName);
 	//add listeners after content is loaded
 	commentReadMore("readmore-1","dots-1","more-1");
 	commentReadMore("readmore-2","dots-2","more-2");
+}
 
-})();
-
-homePageLink.addEventListener('click',async (event)=>{	
-	let elFileName = getFileNameAttributeValue(homePageLink.attributes);
-	await loadHome(elFileName);
-});
 
 profilePageLink.addEventListener('click',async (event)=>{	
 	let elFileName = getFileNameAttributeValue(profilePageLink.attributes);
 	await loadHome(elFileName);
+});
+
+userMessagesLink.addEventListener('click',async (event)=>{	
+	let elFileName = getFileNameAttributeValue(userMessagesLink.attributes);
+	await loadHome(elFileName);
+	const sidebar = document.querySelector(".sidebar");
+	document.getElementById("sidebarCollapse").addEventListener('click',()=>{
+		sidebar.classList.toggle("active")
+	});
+	
 });
 
 
@@ -76,3 +89,4 @@ function commentReadMore(readmoreId,dotsId,moreId){
 
 	});
 };
+

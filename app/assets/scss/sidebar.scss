@@ -1,0 +1,122 @@
+
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import '../../../node_modules/bootstrap/scss/variables';
+@import '../../../node_modules/bootstrap/scss//mixins';
+
+
+$primary: #866ec7;
+$white: #ffff;
+
+.sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: $primary;
+  color:$white;
+  transition: all 0.3s;
+  position: relative;
+  .h6{
+  	color: $white;
+  }
+  &.active{
+  	margin-left: -250px;
+  	.custom-menu{
+			margin-right: -50px;
+	  }
+  }
+  h1{
+  	margin-bottom: 20px;
+  	font-weight: 700;
+  	.logo{
+  		color: $white;
+  	}
+  }
+  ul.components{
+  	padding: 0;
+  }
+  ul{
+    li{
+    	font-size: 16px;
+    	>ul{
+    		margin-left: 10px;
+    		li{
+    			font-size: 14px;
+    		}
+    	}
+    	a{
+    		padding: 10px 0;
+		    display: block;
+		    color: rgba(255,255,255,.8);
+		    border-bottom: 1px solid rgba(255,255,255,.1);
+		    &:hover{
+		    	color: $white;
+		    }
+    	}
+    	&.active{
+    		> a{
+    			background: transparent;
+    			color: $white;
+    		}
+    	}
+    }
+  }
+  @include media-breakpoint-down(md){
+    margin-left: -250px;
+    &.active {
+      margin-left: 0;
+    }
+    .custom-menu{
+    	margin-right: -50px !important;
+    	top: 10px !important;
+    }
+  }
+	a {
+		transition: .3s all ease;
+		color: $primary;
+		text-decoration: none !important;
+		&:hover, &:focus {
+			text-decoration: none !important;
+			outline: none !important;
+			box-shadow: none;
+		}
+	}
+	button {
+		transition: .3s all ease;
+		&:hover, &:focus {
+			text-decoration: none !important;
+			outline: none !important;
+			box-shadow: none !important;
+		}
+	}
+
+  .custom-menu{
+		display: inline-block;
+		position: absolute;
+		top: 50px;
+		right: 0;
+		margin-right: -20px;
+		@include transition(.3s);
+		.btn{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			&.btn-primary{
+				background: darken($primary,10%);
+				border-color: darken($primary,10%);
+				&:hover, &:focus{
+					background: darken($primary,10%) !important;
+					border-color: darken($primary,10%) !important;
+				}
+			}
+		}
+  }
+}
+
+// .dropdown-toggle::after {
+//   display: block;
+//   position: absolute;
+//   top: 50%;
+//   right: 0;
+//   transform: translateY(-50%);
+// }
+
+
