@@ -33,22 +33,54 @@
   box-shadow: none !important;
 }
 
-#more {
+.more {
   display: none;
   transition: height 0.4s opacity 0.2s ease-out;
 }
 
-#readmore {
+.readmore {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-#readmore:hover {
+.readmore:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
 .user-img:hover {
   cursor: pointer;
+}
+
+@media (min-width: 1200px) {
+  .home-content {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-rows: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .bd-aside {
+    grid-area: 1/6;
+    scroll-margin-top: 4rem;
+  }
+}
+@media (min-width: 1200px) {
+  .bd-container {
+    grid-column: 2/span 4;
+  }
+}
+.bd-aside a {
+  padding: 0.1875rem 0.5rem;
+  margin-top: 0.125rem;
+  margin-left: 0.3125rem;
+  color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
+}
+.bd-aside a:hover,
+.bd-aside a:focus {
+  color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(121, 82, 179, 0.1);
 }
 
 /*# sourceMappingURL=style.css.map */
