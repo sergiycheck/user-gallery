@@ -1,3 +1,6 @@
+
+@import './sidebar.scss';
+
 .wrapper {
 	position: relative;
 	top: 0;
@@ -86,4 +89,6 @@ $svg-search-icon:url("../img/search.svg");
 		background-color: rgba(121, 82, 179, .1);
 	}
 	
-} 
+}
+
+
