@@ -1,18 +1,31 @@
 const homePageLink =  document.getElementById("loadHomePage");
+const profilePageLink =  document.getElementById("loadProfile");
 
 document.addEventListener('DOMContentLoaded', ()=>{
 	console.log("content loaded");
 });
 
+
 (async function loadContent(){
-	let elFileName = getFileNameAttributeValue(homePageLink.attributes)
+	let elFileName = getFileNameAttributeValue(homePageLink.attributes);
 	await loadHome(elFileName);
-	commentReadMore();
+	//add listeners after content is loaded
+	commentReadMore("readmore-1","dots-1","more-1");
+	commentReadMore("readmore-2","dots-2","more-2");
+
 })();
 
-homePageLink.addEventListener('click',(event)=>{	
-	console.log("home link clicked");
+homePageLink.addEventListener('click',async (event)=>{	
+	let elFileName = getFileNameAttributeValue(homePageLink.attributes);
+	await loadHome(elFileName);
 });
+
+profilePageLink.addEventListener('click',async (event)=>{	
+	let elFileName = getFileNameAttributeValue(profilePageLink.attributes);
+	await loadHome(elFileName);
+});
+
+
 
 function getFileNameAttributeValue(attributes){
 	let elFileName = "";
@@ -37,15 +50,18 @@ async function fetchHtmlAsText(url) {
 	const response = await fetch(url);
 	return await response.text();
 }
+
+
+
 //todo: add animation to comment read more
-function commentReadMore(){
+function commentReadMore(readmoreId,dotsId,moreId){
 	const readMoreSpanPromise =  new Promise((resolve,reject)=>{
-		resolve(document.getElementById("readmore"));	
+		resolve(document.getElementById(readmoreId));	
 	});
 	readMoreSpanPromise.then((readMoreSpan)=>{
-		readMoreSpan.addEventListener('click',()=>{
-			let dots = document.getElementById("dots");
-			let moreText = document.getElementById("more");
+		readMoreSpan.addEventListener('click',(event)=>{
+			let dots = document.getElementById(dotsId);
+			let moreText = document.getElementById(moreId);
 		
 			if(dots.style.display=="none"){
 				dots.style.display = "inline";
@@ -59,5 +75,4 @@ function commentReadMore(){
 		},false);
 
 	});
-
 };
