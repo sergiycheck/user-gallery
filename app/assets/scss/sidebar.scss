@@ -3,22 +3,25 @@
 @import '../../../node_modules/bootstrap/scss/variables';
 @import '../../../node_modules/bootstrap/scss//mixins';
 
+// refresh page to apply styles from scss
 
-$primary: #866ec7;
-$white: #ffff;
+// $primary: #654da7;
+// $white: #ffff;
+$sidebarWidth:450px;
+$sideBarAHover:rgba(28, 140, 252, 0.79);
 
 .sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background: $primary;
+  min-width: $sidebarWidth;
+  max-width: $sidebarWidth;
+  // background: rgb(133, 196, 206);
   color:$white;
   transition: all 0.3s;
   position: relative;
   .h6{
-  	color: $white;
+  	color: $black;
   }
   &.active{
-  	margin-left: -250px;
+  	margin-left: -$sidebarWidth;
   	.custom-menu{
 			margin-right: -50px;
 	  }
@@ -27,7 +30,7 @@ $white: #ffff;
   	margin-bottom: 20px;
   	font-weight: 700;
   	.logo{
-  		color: $white;
+  		color: $black;
   	}
   }
   ul.components{
@@ -43,24 +46,26 @@ $white: #ffff;
     		}
     	}
     	a{
-    		padding: 10px 0;
+    		padding: 10px 5px;
 		    display: block;
-		    color: rgba(255,255,255,.8);
+		    color: rgba(27, 22, 22, 0.8);
 		    border-bottom: 1px solid rgba(255,255,255,.1);
 		    &:hover{
 		    	color: $white;
+					background: $sideBarAHover;
+					cursor: pointer;
 		    }
     	}
     	&.active{
     		> a{
     			background: transparent;
-    			color: $white;
+    			color: $black;
     		}
     	}
     }
   }
   @include media-breakpoint-down(md){
-    margin-left: -250px;
+    margin-left: -$sidebarWidth;
     &.active {
       margin-left: 0;
     }
@@ -71,7 +76,7 @@ $white: #ffff;
   }
 	a {
 		transition: .3s all ease;
-		color: $primary;
+		// color: $primary;
 		text-decoration: none !important;
 		&:hover, &:focus {
 			text-decoration: none !important;
@@ -118,5 +123,22 @@ $white: #ffff;
 //   right: 0;
 //   transform: translateY(-50%);
 // }
+.user-wrapper{
+	height: 100%;
+}
+.chat-content{
+	min-height: 85%;
+	width: auto;
+}
+.chat-message-container{
+	max-height: 50vh;
+	.edit-msg:hover{
+		cursor: pointer;
+		color: rgb(0, 0, 0);
+	}
+}
+
+
+
 
 

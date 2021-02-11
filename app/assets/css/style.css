@@ -10620,18 +10620,17 @@ textarea.form-control-lg {
   }
 }
 .sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background: #866ec7;
-  color: #ffff;
+  min-width: 450px;
+  max-width: 450px;
+  color: #fff;
   transition: all 0.3s;
   position: relative;
 }
 .sidebar .h6 {
-  color: #ffff;
+  color: #000;
 }
 .sidebar.active {
-  margin-left: -250px;
+  margin-left: -450px;
 }
 .sidebar.active .custom-menu {
   margin-right: -50px;
@@ -10641,7 +10640,7 @@ textarea.form-control-lg {
   font-weight: 700;
 }
 .sidebar h1 .logo, .sidebar .h1 .logo {
-  color: #ffff;
+  color: #000;
 }
 .sidebar ul.components {
   padding: 0;
@@ -10656,21 +10655,23 @@ textarea.form-control-lg {
   font-size: 14px;
 }
 .sidebar ul li a {
-  padding: 10px 0;
+  padding: 10px 5px;
   display: block;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(27, 22, 22, 0.8);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .sidebar ul li a:hover {
-  color: #ffff;
+  color: #fff;
+  background: rgba(28, 140, 252, 0.79);
+  cursor: pointer;
 }
 .sidebar ul li.active > a {
   background: transparent;
-  color: #ffff;
+  color: #000;
 }
 @media (max-width: 767.98px) {
   .sidebar {
-    margin-left: -250px;
+    margin-left: -450px;
   }
   .sidebar.active {
     margin-left: 0;
@@ -10682,7 +10683,6 @@ textarea.form-control-lg {
 }
 .sidebar a {
   transition: 0.3s all ease;
-  color: #866ec7;
   text-decoration: none !important;
 }
 .sidebar a:hover, .sidebar a:focus {
@@ -10717,12 +10717,29 @@ textarea.form-control-lg {
   border-radius: 50%;
 }
 .sidebar .custom-menu .btn.btn-primary {
-  background: #6749b9;
-  border-color: #6749b9;
+  background: #0257d5;
+  border-color: #0257d5;
 }
 .sidebar .custom-menu .btn.btn-primary:hover, .sidebar .custom-menu .btn.btn-primary:focus {
-  background: #6749b9 !important;
-  border-color: #6749b9 !important;
+  background: #0257d5 !important;
+  border-color: #0257d5 !important;
+}
+
+.user-wrapper {
+  height: 100%;
+}
+
+.chat-content {
+  min-height: 85%;
+  width: auto;
+}
+
+.chat-message-container {
+  max-height: 50vh;
+}
+.chat-message-container .edit-msg:hover {
+  cursor: pointer;
+  color: black;
 }
 
 .wrapper {
