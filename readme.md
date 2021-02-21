@@ -1,14 +1,14 @@
-##hostings:
-	[gh pages](https://sergiycheck.github.io/user-gallery/app/#)
+## hostings:
+* [*gh pages*](https://sergiycheck.github.io/user-gallery/app/#)
 
 
-##start commands 
+## start commands 
 
-v1:
+* v1:
 	npm i
 	node server.js
 
-v2:
+* v2:
 	docker-compose up
 	
 	
