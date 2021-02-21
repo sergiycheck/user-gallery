@@ -5,8 +5,8 @@
 ## start commands 
 
 * v1:
-	npm i
-	node server.js
+	1. `npm i`
+	1. `node server.js`
 
 * v2:
 	docker-compose up
