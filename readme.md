@@ -1,4 +1,8 @@
-start commands 
+##hostings:
+	[gh pages](https://sergiycheck.github.io/user-gallery/app/#)
+
+
+##start commands 
 
 v1:
 	npm i
@@ -6,3 +10,5 @@ v1:
 
 v2:
 	docker-compose up
+	
+	
