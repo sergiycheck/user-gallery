@@ -36,11 +36,16 @@
 <!-- https://www.creative-tim.com/cheatsheet/bootstrap4?# -->
 <!-- https://getbootstrap.com/docs/5.0/utilities/spacing/ -->
 <!-- https://icons.getbootstrap.com/#icon-font -->
+
+
 <body>
+
 	<div class="wrapper">
+
+
 		
-		<nav class="navbar navbar-expand-md fixed-top navbar-light shadow p-1 bg-light" role="navigation">  <!---->
-			<div class="container text-dark">
+		<nav class="navbar navbar-expand-md fixed-top navbar-light shadow p-0 bg-light" role="navigation">  <!---->
+			<div class="container  text-dark">
 				<a id="loadHomePage" class="navbar-brand" fileName="home.html" href="#">Home</a>
 
 				<button class="navbar-toggler" type="button" 
@@ -76,6 +81,18 @@
 							<a id="loadProfile" class="nav-link" href="#" fileName="personal-profile.html"> 
 									Profile
 							</a>
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle" href="#" 
+									role="button" id="dropdownMenuLink" 
+									data-bs-toggle="dropdown" aria-expanded="false">
+									Manage
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									<li><a class="dropdown-item" href="#">Action</a></li>
+									<li><a class="dropdown-item" href="#">Another action</a></li>
+									<li><a class="dropdown-item" href="#">Something else here</a></li>
+								</ul>
+							</div>
 						</div>
 
 					</div>

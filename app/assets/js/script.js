@@ -12,15 +12,65 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 homePageLink.addEventListener('click',async (event)=>{	
 	await processHomeContent();
+
 });
 
 async function processHomeContent(){
 	let elFileName = getFileNameAttributeValue(homePageLink.attributes);
 	await loadHome(elFileName);
 	//add listeners after content is loaded
+	//todo: add listeners using collections
 	commentReadMore("readmore-1","dots-1","more-1");
 	commentReadMore("readmore-2","dots-2","more-2");
+
+	showBigPostView("show-big-view-1");
+	showBigPostView("show-big-view-2");
+
 }
+function showBigPostView(imageId){
+	const postSourceElement = document.getElementById(imageId);
+	let postSourceUrl = Object.values(postSourceElement.attributes).find(a=>a.name=="src").value;
+	//console.log(postSourceUrl);
+	postSourceElement.addEventListener('click',()=>{
+		document.querySelector(".overlay").style.height = "100%";
+		setTimeout(()=>{
+			closeBigPostView();
+			setPostSource(postSourceUrl);
+		},10)
+	});
+}
+
+
+//https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/
+function closeBigPostView(){
+	let overlayElem = document.querySelector(".overlay");
+
+	overlayElem.addEventListener("click", (evt) => {
+    const overlayMainElem = document.getElementById("overlayMainElem");
+    let targetElement = evt.target; // clicked element
+
+    do {
+        if (targetElement == overlayMainElem) {
+            // This is a click inside. Do nothing, just return.
+            return;
+        }
+        // Go up the DOM
+        targetElement = targetElement.parentNode;//detecting parent nodes
+    } while (targetElement);
+
+    // This is a click outside.
+    document.querySelector(".overlay").style.height = "0%";
+		
+		//document.querySelector(".overlay").style.display = "none";
+});
+}
+
+function setPostSource(sourceName){
+	document.getElementById("overlay-post-view").setAttribute("src",sourceName);
+}
+
+
+
 
 
 profilePageLink.addEventListener('click',async (event)=>{	
