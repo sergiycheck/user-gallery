@@ -10748,6 +10748,33 @@ textarea.form-control-lg {
   height: 100vh;
 }
 
+/* next max z-index*/
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  height: 0vh;
+  width: 100%;
+  position: fixed;
+  /* Stay in place */
+  z-index: 1030;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.572);
+  /* Black fallback color */
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  overflow-y: hidden;
+  transition: 0.2s;
+  /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+.overlay-content {
+  position: relative;
+  width: 100%;
+  top: 10%;
+}
+
 #hm-heading {
   background-image: url("../img/pexels-dom-j-310452.jpg");
   height: 100%/3;

@@ -6,6 +6,30 @@
 	top: 0;
 	height: 100vh;
 }
+$user-max-z-index:1030;/* next max z-index*/
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 0vh;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: $user-max-z-index; /* Sit on top */ 
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.572); /* Black fallback color */
+  overflow-x: hidden; /* Disable horizontal scroll */
+	overflow-y: hidden;//not working
+  transition: 0.2s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+.overlay-content{
+  position: relative;
+  width: 100%;
+	top:10%;
+}
+
+
 
 $image-link:url("../img/pexels-dom-j-310452.jpg");
 #hm-heading{
@@ -108,17 +132,7 @@ $svg-search-icon:url("../img/search.svg");
   font-size: inherit;
   padding: 1px 6px;
 }
-// .textarea[contenteditable]:empty::before {
-//   content: "Placeholder still possible";
-//   color: gray;
-// }
-// .textarea {
-//   display: block;
-//   width: 100%;
-//   overflow: hidden;
-//   resize: both;
-//   min-height: 40px;
-//   line-height: 20px;
-// }
+
+
 
 
