@@ -3,3 +3,4 @@ package-lock.json
 commands
 todo
 azure_commands
+/app/assets/css/*.map
