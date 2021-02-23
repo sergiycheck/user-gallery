@@ -19,27 +19,101 @@ async function processHomeContent(){
 	let elFileName = getFileNameAttributeValue(homePageLink.attributes);
 	await loadHome(elFileName);
 	//add listeners after content is loaded
-	//todo: add listeners using collections
-	commentReadMore("readmore-1","dots-1","more-1");
-	commentReadMore("readmore-2","dots-2","more-2");
+	commentReadMoreWithClassName();
+	showBigPostWithClassName();
+	skipVideoOnEnd();
+	
+}
 
-	showBigPostView("show-big-view-1");
-	showBigPostView("show-big-view-2");
+//https://www.w3schools.com/tags/ref_av_dom.asp
+
+function skipVideoOnEnd(){
+
+	AddClickListenerForCarouselNextBtn();
+
+	let loadVideosTimerId = setTimeout(()=>{
+		// let vid = document.getElementById("myVideo1");
+		// console.log('id video',vid.id);
+		// videoEndedHandler(vid);
+
+		const videos = document.querySelectorAll(".carousel-video-element");
+		videos.forEach(vid=>{
+			vid.pause();
+			let targetElement = vid.parentNode;
+			do{
+				if(targetElement.classList && 
+						targetElement.classList.contains("active")){
+					vid.play();
+					videoEndedHandler(vid);
+					return;
+				}
+				targetElement = targetElement.parentNode;
+			}while(targetElement)
+			clearTimeout(loadVideosTimerId);
+		});
+
+	},100);
+}
+
+function videoEndedHandler(vid){
+	if(vid){
+		vid.onended = function(){
+			document.querySelector(".carsl-control-next").click();
+		};
+	}
 
 }
-function showBigPostView(imageId){
-	const postSourceElement = document.getElementById(imageId);
-	let postSourceUrl = Object.values(postSourceElement.attributes).find(a=>a.name=="src").value;
-	//console.log(postSourceUrl);
-	postSourceElement.addEventListener('click',()=>{
-		document.querySelector(".overlay").style.height = "100%";
+
+
+
+function AddClickListenerForCarouselNextBtn(){
+	const btnNexVideo = document.querySelector(".carsl-control-next");
+	btnNexVideo.addEventListener('click',()=>{
+
 		setTimeout(()=>{
-			closeBigPostView();
-			setPostSource(postSourceUrl);
-		},10)
+
+			let items = document.querySelectorAll(".carousel-item");
+			items.forEach(item=>{
+				if(item && item.classList.contains("active")){
+					let vid = item.querySelector(".carousel-video-element");
+
+					playOrPause(vid);
+					videoEndedHandler(vid);
+				}
+			});
+
+		},650);
+
+	});
+}
+function playOrPause(vid){
+	if (vid && vid.paused) {
+		vid.play();
+	} else if(vid) {
+		vid.pause();
+		vid.currentTime = 0;
+	}
+}
+
+
+function showBigPostWithClassName(){
+	let posts = document.querySelectorAll(".click-big-post");
+	posts.forEach(p=>{
+		p.addEventListener('click',(event)=>{
+			showBigPostViewFromClass(event.target);
+		})
 	});
 }
 
+function showBigPostViewFromClass(postSourceElement){
+	let postSourceUrl = Object.values(postSourceElement.attributes).find(a=>a.name=="src").value;
+	document.querySelector(".overlay").style.height = "100%";
+	setTimeout(()=>{
+		closeBigPostView();
+		setPostSource(postSourceUrl);
+	},10)
+
+}
 
 //https://www.blustemy.io/detecting-a-click-outside-an-element-in-javascript/
 function closeBigPostView(){
@@ -69,9 +143,34 @@ function setPostSource(sourceName){
 	document.getElementById("overlay-post-view").setAttribute("src",sourceName);
 }
 
+function commentReadMoreWithClassName(){
+	let posts = document.querySelectorAll(".readmore");
+	posts.forEach(p=>{
+		p.addEventListener('click',(event)=>{
+			commentReadMoreWithClass(event.target.parentElement);
+		})
+	});
+}
 
-
-
+//todo: add animation to comment read more
+function commentReadMoreWithClass(commentContent){
+	const readMoreSpanPromise =  new Promise((resolve,reject)=>{
+		resolve(commentContent.querySelector(".readmore"));	
+	});
+	readMoreSpanPromise.then((readMoreSpan)=>{
+		let dots = commentContent.querySelector(".dots");
+		let moreText = commentContent.querySelector(".more");
+		if(dots.style.display=="none"){
+			dots.style.display = "inline";
+			moreText.style.display = "none";
+			readMoreSpan.innerText = "read more"
+		}else{
+			dots.style.display = "none";
+			moreText.style.display = "inline";
+			readMoreSpan.innerText = "read less"
+		}
+	});
+};
 
 profilePageLink.addEventListener('click',async (event)=>{	
 	let elFileName = getFileNameAttributeValue(profilePageLink.attributes);
@@ -113,32 +212,6 @@ async function fetchHtmlAsText(url) {
 	const response = await fetch(url);
 	return await response.text();
 }
-
-
-
-//todo: add animation to comment read more
-function commentReadMore(readmoreId,dotsId,moreId){
-	const readMoreSpanPromise =  new Promise((resolve,reject)=>{
-		resolve(document.getElementById(readmoreId));	
-	});
-	readMoreSpanPromise.then((readMoreSpan)=>{
-		readMoreSpan.addEventListener('click',(event)=>{
-			let dots = document.getElementById(dotsId);
-			let moreText = document.getElementById(moreId);
-		
-			if(dots.style.display=="none"){
-				dots.style.display = "inline";
-				moreText.style.display = "none";
-				readMoreSpan.innerText = "read more"
-			}else{
-				dots.style.display = "none";
-				moreText.style.display = "inline";
-				readMoreSpan.innerText = "read less"
-			}
-		},false);
-
-	});
-};
 
 function addMessage(){
 	const sendMsgBtn = document.getElementById("send-message-btn");
