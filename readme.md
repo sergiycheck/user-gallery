@@ -1,8 +1,14 @@
-## hostings:
+## Hostings:
 * [*gh pages*](https://sergiycheck.github.io/user-gallery/app/#)
 
+### Repositories
 
-## start commands:
+| **Version** | **Link to repo** |
+| ------ | ------ |
+| Angular | [**_angular repository_**](https://github.com/sergiycheck/ang-user-gallery) |
+
+
+## Start commands:
 
 * v1:
 	1. `npm i`
