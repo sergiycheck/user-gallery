@@ -6,6 +6,7 @@
 | **Version** | **Link to repo** |
 | ------ | ------ |
 | Angular | [**_angular repository_**](https://github.com/sergiycheck/ang-user-gallery) |
+| React | [**react repository**](https://github.com/sergiycheck/react-user-gallery) | 
 
 
 ## Start commands:
