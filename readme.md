@@ -7,6 +7,7 @@
 | ------ | ------ |
 | Angular | [**_angular repository_**](https://github.com/sergiycheck/ang-user-gallery) |
 | React | [**_react repository_**](https://github.com/sergiycheck/react-user-gallery) | 
+| Vue | [**_vue repository_**](https://github.com/sergiycheck/vue-user-gallery) | 
 
 
 ## Start commands:
